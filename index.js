@@ -5,7 +5,7 @@ const cors = require('cors');
 const blocks = require('./routes/blocks')
 
 const app = express();
-const port = process.env.PORT || "8080";
+const port = process.env.NODE_ENV === 'production' ? (process.env.PORT || 80) : 4000;
 
 const db = require('./db');
 db.on('error', console.error.bind(console, 'MongoDB connection error:'))
